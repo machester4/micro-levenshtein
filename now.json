@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "micro-levenshtein",
+  "builds": [{ "src": "*.js", "use": "@now/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.js" }]
+}
