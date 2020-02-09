@@ -1,11 +1,11 @@
 const { json } = require("micro");
-const check = require("./lib/checker");
+const suggest = require("./lib/suggest");
 
 module.exports = async req => {
   try {
-    const { word, lang } = await json(req);
-    console.log(word, lang);
-    const suggestions = await check(word, lang);
+    const { word, dict } = await json(req);
+    console.log(word, dict);
+    const suggestions = await suggest(word, dict);
     return {
       suggestions
     };
