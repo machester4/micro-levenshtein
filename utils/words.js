@@ -1,7 +1,7 @@
-function filterByLength(word, words) {
+function filterWordsByLength(word, words) {
   // the filtered letter can have <low_diff> letters less or <high_diff> letters more
-  const low_diff = 1;
-  const high_diff = 2;
+  const low_diff = 3;
+  const high_diff = 3;
   const result = words.filter(w => {
     const diff = Math.abs(word.length - w.length);
     const sign = Math.sign(word.length - w.length);
@@ -15,6 +15,27 @@ function filterByLength(word, words) {
   return result;
 }
 
+function sanatizer(text) {
+  const reDuplicates = new RegExp(/[^\w\s+¿?!¡,.]|(.)(?=\1)/gi);
+  const reQuestionStart = new RegExp(/\¿s*\s*/g);
+  const reQuestionEnd = new RegExp(/\s*\?s*/g);
+  const reExclamationStart = new RegExp(/\¡s*\s*/g)
+  const reExclamationEnd = new RegExp(/\s*\!s*/g);
+  const reComma = new RegExp(/\s*\,s*/g);
+  return text
+            .replace(reDuplicates, "")
+            .replace(reQuestionStart, "¿")
+            .replace(reQuestionEnd, "?")
+            .replace(reExclamationStart, "¡")
+            .replace(reExclamationEnd, "!")
+            .replace(reComma, ",");
+}
+
+function getWordsFromText(text) {
+  return sanatizer(text).split(" ");
+}
+
 module.exports = {
-  filterByLength
+  filterWordsByLength,
+  sanatizer,
 };
