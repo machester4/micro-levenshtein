@@ -1,7 +1,7 @@
 const path = require("path");
 const { existsFile, readFile } = require("./file");
 
-function Dictionary(lang) {
+function dictionary(lang) {
   return new Promise((resolve, reject) => {
     try {
       const dic_path = path.resolve(__dirname, "../dict") + "/" + lang + ".dic";
@@ -17,4 +17,4 @@ function Dictionary(lang) {
   });
 }
 
-module.exports = Dictionary;
+module.exports = dictionary;

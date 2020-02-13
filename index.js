@@ -1,15 +1,16 @@
-const { json } = require("micro");
+const { json, send } = require("micro");
 const suggest = require("./lib/suggest");
 
-module.exports = async req => {
+module.exports = async (req, res) => {
   try {
-    const { word, dict } = await json(req);
-    console.log(word, dict);
-    const suggestions = await suggest(word, dict);
+    const { text, dict } = await json(req);
+    if (!text || !dict) throw "text or dict param not found";
+    console.log(text, dict);
+    const suggestions = await suggest(text, dict);
     return {
       suggestions
     };
   } catch (error) {
-    return error;
+    send(res, 400, { error });
   }
 };
