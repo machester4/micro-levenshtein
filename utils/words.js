@@ -16,7 +16,17 @@ function filterWordsByLength(word, words) {
 }
 
 function isWord(word) {
-  const regex = /[\w\s+\u00C0-\u00FF]|(.)(?=\1)/gi;
+  const regex = /^[a-zA-Z\u00C0-\u00FF]+$/gi;
+  return regex.test(word);
+}
+
+function isMarksOrNumber(word) {
+  const regex = /[¿?!¡,.:;]|[0-9]/gi;
+  return regex.test(word);
+}
+
+function isMetric(word) {
+  const regex = /(\d+).?(\d*)\s*(kg|g|lt)/gi;
   return regex.test(word);
 }
 
@@ -28,5 +38,7 @@ function getWordsFromText(text) {
 module.exports = {
   filterWordsByLength,
   getWordsFromText,
-  isWord
+  isWord,
+  isMarksOrNumber,
+  isMetric
 };
