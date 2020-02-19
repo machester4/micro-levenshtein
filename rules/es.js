@@ -1,17 +1,25 @@
 module.exports = {
   "?"(currentWords, nextWord) {
     const regex = /^¿/;
-    const firstWord = currentWords[0];
+    const firstWord = Object.keys(currentWords)[0];
     if (!regex.test(firstWord)) {
-      currentWords.unshift({ "¿": ["¿"] });
+      if(!currentWords[firstWord]) {
+        currentWords[firstWord] = [`¿${firstWord}`];
+      } else {
+        currentWords[firstWord] = currentWords[firstWord].map(w => `¿${w}`);
+      }
     }
     return currentWords;
   },
   "!"(currentWords, nextWord) {
     const regex = /^¡/;
-    const firstWord = currentWords[0];
+    const firstWord = Object.keys(currentWords)[0];
     if (!regex.test(firstWord)) {
-      currentWords.unshift({ "¡": ["¡"] });
+      if(!currentWords[firstWord]) {
+        currentWords[firstWord] = [`¡${firstWord}`];
+      } else {
+        currentWords[firstWord] = currentWords[firstWord].map(w => `¡${w}`);
+      }
     }
     return currentWords;
   },
@@ -24,9 +32,4 @@ module.exports = {
     }
     return currentWords;
   },
-  validate(rule, currentWords, nextWord) {
-    if (typeof this[rule] === "function")
-      return this[rule](currentWords, nextWord);
-    return currentWords;
-  }
 };
