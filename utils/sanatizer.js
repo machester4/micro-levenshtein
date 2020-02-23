@@ -14,7 +14,7 @@ function sanatizerSpecialCharacters(text) {
 }
 
 function sanitize(text) {
-  const regex = /[^\w\s+¿?!¡,.\u00C0-\u00FF]|(.)(?=\1)/gi;
+  const regex = /[^\w\s+¿?!¡,.:;\u00C0-\u00FF]|(.)(?=\1)/gi;
   let parsed = text.toLowerCase();
   parsed = sanatizerSpecialCharacters(text);
   parsed = parsed.replace(regex, "");
