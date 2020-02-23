@@ -1,14 +1,12 @@
-const esRules = require('./es');
-
 module.exports = {
-  es: esRules,
   validateLangRules(rules, word, currentWords, nextWord) {
+    const langRules = require(`./${rules}`);
+
     if (!word) return currentWords;
-    const rule = esRules[word]; // this[rules][word];
-    if (typeof rule === 'function') {
+    const rule = langRules[word];
+    if (typeof rule === "function") {
       return rule(currentWords, nextWord);
     }
-  
     return currentWords;
   }
-}
+};
