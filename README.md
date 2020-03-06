@@ -56,42 +56,29 @@ You will get a clean text and the suggestions to the words with possible grammat
 
 ```javascript
 {
-    "suggestions": [
-        "chivito",
-        [
+    "suggestion": {
+        "chivito": null,
+        "comn": [
             "común",
             "con",
-            "lomo",
-            "jamón",
-            "carne",
-            "pan"
+            "lomo"
         ],
-        "de",
-        [
-            "jamón",
-            "dijon",
-            "salmón",
-            "común",
-            "con",
-            "lomo",
-            "pan"
+        "de": null,
+        "jamon": [
+            "jamón"
         ],
-        "con",
-        [
+        "con": null,
+        "muzarela": [
             "muzzarella"
         ],
-        "y",
-        [
-            "rúcula",
-            "rusa"
+        "y": null,
+        "rucula": [
+            "rúcula"
         ],
-        "con",
-        "1kg",
-        "de",
-        [
-            "queso"
-        ]
-    ]
+        "": [],
+        "1kg": [],
+        "requeson": null
+    }
 }
 ```
 
